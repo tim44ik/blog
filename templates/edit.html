@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+textarea[name="text"], textarea[name="title"] {
+  width: 100%;
+  min-height: 50px;
+  background-color: white;
+  margin: auto;
+  display: block;
+  overflow: hidden;
+  resize: none;
+}
+
+textarea[name="text"]{
+    font-size: 28px;
+}
+
+textarea[name="title"]{
+    width: 20%;
+    height: 1.2em;
+    font-size: 40px;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <textarea id="title" name="title" class="title" oninput="this.style.width = ''; this.style.width = this.scrollWidth + 'px';this.style.height = ''; this.style.height = this.scrollHeight + 'px'">{{post.title}}</textarea>
+</div>
+    
+<div class="container">
+            <textarea id="text" name="text" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'">{{post.body}}</textarea><br>
+            <button type="submit">Сохранить</button>
+        </form>
+</div>
+</body>
+</html>
